@@ -20,7 +20,6 @@ class RoomsController < ApplicationController
 
   def party
   	@room = Room.find(params[:id])
-  	@tok_token = @opentok.generate_token :session_id => @room.sessionId
   end
 
   def config_opentok

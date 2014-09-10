@@ -4,7 +4,7 @@ Brogramming::Application.routes.draw do
   get "rooms/create"
   get "rooms/party"
   get "rooms/config_opentok"
-  root to: "rooms#index"
+  root to: "users#new"
   match "/party/:id", :to => "rooms#party", :as => :party, :via => :get
   resources :rooms
   resources :users
