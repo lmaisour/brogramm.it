@@ -1,11 +1,13 @@
 Brogramming::Application.routes.draw do
 
-  get "rooms/index"
-  get "rooms/create"
-  get "rooms/party"
-  get "rooms/config_opentok"
   root to: "users#new"
-  match "/party/:id", :to => "rooms#party", :as => :party, :via => :get
+
+  get 'rooms/index'
+  get 'rooms/create'
+  get 'rooms/show'
+  get 'rooms/config_opentok'
+  match "/show/:id", to: "rooms#show", as: :show, via: [:get]
+  
   resources :rooms
   resources :users
 

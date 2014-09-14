@@ -1,70 +1,20 @@
-<html>
-<head>
-  <meta charset="utf-8" />
-  <!-- Firebase -->
-  <script src="https://cdn.firebase.com/js/client/1.0.17/firebase.js"></script>
+<!-- Warming Up -->
+<link href='http://fonts.googleapis.com/css?family=Lato:100' rel='stylesheet' type='text/css'>
+<script src="http://pupunzi.com/mb.components/mb.YTPlayer/demo/inc/jquery.mb.YTPlayer.js"></script>
 
-  <!-- ACE and its JavaScript mode and theme files -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.1.3/ace.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.1.3/mode-javascript.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.1.3/theme-textmate.js"></script>
+<!--Video Section-->
+<section class="content-section video-section">
+  <div class="pattern-overlay">
+    <a id="bgndVideo" class="player" data-property="{videoURL:'https://www.youtube.com/watch?v=RfPubEYjqes&feature=youtu.be',containment:'.video-section', quality:'large', autoPlay:true, mute:true, opacity:1}"></a>
+    <div class="homecontainer">
+      <div class="row">
+        <div class="col-lg-12">
+          </div>
+          </div>
 
-  <!-- Firepad -->
-  <link rel="stylesheet" href="https://cdn.firebase.com/libs/firepad/1.0.0/firepad.css" />
-  <script src="https://cdn.firebase.com/libs/firepad/1.0.0/firepad.min.js"></script>
+        </div>
 
-  <style>
-    html { height: 100%; }
-    body { margin: 0; height: 100%; position: relative; }
-    /* Height / width / positioning can be customized for your use case.
-       For demo purposes, we make firepad fill the entire browser. */
-    #firepad-container {
-      width: 100%;
-      height: 100%;
-    }
-  </style>
-</head>
+      </div>
+    </div>
 
-<body>
-  <div id="firepad-container"></div>
-
-  <script>
-    function init() {
-      //// Initialize Firebase.
-      var firepadRef = getExampleRef();
-      // TODO: Replace above line with:
-      // var ref = new Firebase('<YOUR FIREBASE URL>');
-
-      //// Create ACE
-      var editor = ace.edit("firepad-container");
-      editor.setTheme("ace/theme/textmate");
-      var session = editor.getSession();
-      session.setUseWrapMode(true);
-      session.setUseWorker(false);
-      session.setMode("ace/mode/javascript");
-
-      //// Create Firepad.
-      var firepad = Firepad.fromACE(firepadRef, editor, {
-        defaultText: '// JavaScript Editing with Firepad!\nfunction go() {\n  var message = "Hello, world.";\n  console.log(message);\n}'
-      });
-    }
-
-    // Helper to get hash from end of URL or generate a random one.
-    function getExampleRef() {
-      var ref = new Firebase('https://firepad.firebaseio-demo.com');
-      var hash = window.location.hash.replace(/#/g, '');
-      if (hash) {
-        ref = ref.child(hash);
-      } else {
-        ref = ref.push(); // generate unique location.
-        window.location = window.location + '#' + ref.name(); // add it as a hash to the URL.
-      }
-      if (typeof console !== 'undefined')
-        console.log('Firebase data: ', ref.toString());
-      return ref;
-    }
-
-    window.onload = init;
-  </script>
-</body>
-</html>
+  </section>

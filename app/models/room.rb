@@ -1,3 +1,3 @@
 class Room < ActiveRecord::Base
-	has_many :rooms
+	has_many :users
 end

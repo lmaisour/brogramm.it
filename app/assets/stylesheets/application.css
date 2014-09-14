@@ -137,5 +137,46 @@ a:after {
 	border-color: transparent;
 }
 
+.video-section .pattern-overlay {
+background-color: rgba(44, 62, 80,0.0);
+padding: 110px 0 32px;
+min-height: 750px; 
+/* Incase of overlay problems just increase the min-height*/
+}
+.video-section h1, .video-section h3{
+text-align:center;
+color:#fff;
+}
+.video-section h1{
+
+/* props to alexis for letting me know of VW */
+font-size:6vw;
+font-family: 'Lato', sans-serif;
+font-weight:bold;
+text-transform: uppercase;
+margin: 40px auto 0px;
+text-shadow: 3px 3px 3px #000;
+-webkit-text-shadow: 3px 3px 3px #000;
+-moz-text-shadow: 3px 3px 3px #000;
+}
+.video-section h3{
+font-size: 25px;
+font-weight:lighter;
+margin: 0px auto 15px;
+}
+
+.row {
+margin-top: 23%;
+}
+
+.homebutton {
+margin-left: 37%;
+margin-top: 3%;
+}
+
+
+.video-section .buttonBar{display:none;}
+.player {font-size: 1px;}
+
 
 
