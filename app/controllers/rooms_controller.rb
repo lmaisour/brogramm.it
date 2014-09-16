@@ -7,7 +7,8 @@ class RoomsController < ApplicationController
   end
 
  def create
-    session = @opentok.create_session # took out request.remote_addr since 
+    session = @opentok.create_session :media_mode => :routed
+    # took out request.remote_addr since 
     #open tok doesn't allow strings in parameters for sessions
     params[:room][:sessionId] = session.session_id
 

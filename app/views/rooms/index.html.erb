@@ -1,8 +1,10 @@
 <div id=”newRoom”>
 <fieldset>
+	
 <legend>Start a new party room</legend>
 <%= form_for(@new_room) do |f| %>
-Party Name: <%= f.text_field :name %><br/><br/>
+Room Name: <%= f.text_field :name %><br/><br/>
+Room Subject: <%= f.text_field :subject %> <br><br>
 Public? <%= f.check_box :public %><br/><br/>
 
 <%= f.submit %>

@@ -1,11 +1,10 @@
 class User < ActiveRecord::Base
 	has_many :rooms
 	
-	def self.create_with_omniauth(auth)
-		create! do |user|
-			user.provider = auth["provider"]
-			user.uid = auth["uid"]
-			user.name = auth["info"]["name"]
-		end
+	def self.create_from_omniauth(auth_hash)
+  	self.create(provider: auth_hash[:provider],
+      uid: auth_hash[:uid],
+      name: auth_hash[:info][:name])
 	end
+	
 end
