@@ -13,10 +13,10 @@
                         <th>Created At</th>
                     </tr>
                 </thead>
-                    <tr> <% @rooms.each do |room| %></tr>
-                       <td> <%= link_to room.name.upcase %> </td>
-                       <td> <%= room.subject %> </td>
-                       <td> <%= room.created_at %> </td>
+                    <tr> <% @rooms.each do |x| %></tr>
+                       <td> <%= link_to x.name.upcase, x %> </td>
+                       <td> <%= x.subject %> </td>
+                       <td> <%= x.created_at %> </td>
                        <% end %>   
                     </tr>
                 </tbody>

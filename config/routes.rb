@@ -2,18 +2,30 @@ Brogramming::Application.routes.draw do
 
   root to: "users#new"
 
+  namespace :api, defaults: {format: :json} do
+    namespace :v1 do
+      resources :todos
+    end
+  end
+
   get 'rooms/index'
   get 'rooms/create'
   get 'rooms/show'
   get 'rooms/config_opentok'
   match "/show/:id", to: "rooms#show", as: :show, via: [:get]
   
-  resources :rooms
+  resources :rooms do
+    resources :users
+  end
+
   resources :users
+  resources :user_rooms
 
   get '/login' => 'sessions#new'
   get '/auth/github/callback' => 'sessions#create'
   get '/logout' => 'sessions#destroy'
+
+
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

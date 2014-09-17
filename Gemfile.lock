@@ -32,6 +32,7 @@ GEM
       execjs
     bootstrap-sass (3.2.0.1)
       sass (~> 3.2)
+    bower-rails (0.8.3)
     builder (3.1.4)
     coffee-rails (4.0.1)
       coffee-script (>= 2.2.0)
@@ -149,6 +150,7 @@ DEPENDENCIES
   ace-rails-ap (~> 2.0.1)
   autoprefixer-rails
   bootstrap-sass (~> 3.2.0)
+  bower-rails
   coffee-rails (~> 4.0.0)
   figaro
   jbuilder (~> 1.2)
