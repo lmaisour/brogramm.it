@@ -2,7 +2,7 @@ class RoomsController < ApplicationController
   before_action :config_opentok, :except => [:index]
 
   def index
-    @rooms = Room.where(public: true)
+    @rooms = Room.where(public: true).order("created_at DESC")
     @new_room = Room.new
   end
 
@@ -20,14 +20,20 @@ class RoomsController < ApplicationController
         redirect_to root_path 
     end
 
-end
+  end
   
   def show
         @room = Room.find(params[:id])
         @tok_token = @opentok.generate_token @room.sessionId
         # pass in @room.sessionId in as first argument instead of a hash
         # that contains it in a value
-end
+  end
+
+  def destroy
+    @room = Room.find(params[:id])
+    @room.destroy
+    redirect_to rooms_path
+  end
 
   private
 
@@ -40,6 +46,8 @@ end
   def room_params
     params.require(:room).permit(:sessionId, :name, :public)
   end
+
+
 
 
 end
