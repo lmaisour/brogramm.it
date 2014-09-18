@@ -5,25 +5,26 @@
 			<span class="icon-bar"></span>
 			<span class="icon-bar"></span>
 		</button>
-		<a class="navbar-brand" href="index.html">Brogram.it</a>
+		<a class="navbar-brand" href="/">Brogram.it</a>
 	</div>
-	<div class="navbar-collapse collapse">
+	<ul class="nav navbar-nav navbar-right">
 		<ul class="nav navbar-nav navbar-right">
-			<li><%= link_to "Create Private Room", new_room_path %></li>
-			<li><a href="about.html">Join Existing Room</a></li>
+			<li><%= link_to "Create New Room", new_room_path %></li>
+			<li><%= link_to "Join Existing Room", rooms_path %></li>
 			<li class="dropdown">
-<!-- 				<ul class="dropdown-menu" role="menu"> -->
-					<% if current_user %>
-						Welcome <%= current_user.name %>!
-						<%= link_to "Sign Out", logout_path %>
-						<% else %> 
-						<%= link_to "sign in", "/auth/github/" %>
-						<% end %>
-					</ul>
+				<a href="#" class="dropdown-toggle" data-toggle="dropdown"><% if current_user %> Welcome <%= current_user.name %>! <span class="caret"></span></a>
+				<ul class="dropdown-menu" role="menu"> 
+					<li><%= link_to "Sign Out", logout_path %></li>
+					<% else %> 
+					<li><%= link_to "sign in", "/auth/github/" %></li>
+					<% end %>
 				</ul>
-			</div><!--/.nav-collapse -->
-		</div>
-	</div>
+			</li>
+		</ul>
+	</div><!--/.nav-collapse -->
+</div>
+
+
 
 
 

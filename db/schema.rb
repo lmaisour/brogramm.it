@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140917200705) do
+ActiveRecord::Schema.define(version: 20140918032331) do
 
   create_table "rooms", force: true do |t|
     t.string   "name"
@@ -27,6 +27,11 @@ ActiveRecord::Schema.define(version: 20140917200705) do
     t.boolean  "completed",  default: false
     t.datetime "created_at"
     t.datetime "updated_at"
+  end
+
+  create_table "user_rooms", id: false, force: true do |t|
+    t.integer "user_id"
+    t.integer "room_id"
   end
 
   create_table "users", force: true do |t|
