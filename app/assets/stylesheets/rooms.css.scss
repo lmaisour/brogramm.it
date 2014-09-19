@@ -2,3 +2,33 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+section {
+    padding: 100px 0;
+    background-color: #f0f0f0;
+    text-align: center;
+}
+.lead-big {
+    font-size: 28px;
+    line-height: 48px;
+    color: #999;
+}
+.form-inline input,
+.form-inline textarea,
+.form-inline select {
+    max-width: 235px;
+    height: 40px;
+    overflow: hidden;
+    line-height: 40px;
+    background-color: transparent;
+    border: none;
+    border-bottom: 1px dotted;
+    vertical-align: text-bottom;
+    cursor: auto;
+}
+.submit.btn.btn-lg {
+    font-size: 28px;
+    color: #999;
+    border: 1px dotted;
+    background-color: transparent;
+    border-radius: 0;
+}

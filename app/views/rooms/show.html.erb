@@ -15,18 +15,12 @@
 
   <!-- OpenTok -->
   <script src="http://static.opentok.com/v0.91/js/TB.min.js" type="text/javascript"></script>
-
-
 </head>
 
-
 <body>
-
-  
 <div id="invitation">Invite your friends! Share the url of this page http://localhost:3000/show/<%= @room.id %>
 </div>
 
-<div clas="leftpanel">
   <div id="videobox">
     <script type="text/javascript">
     	var apiKey =  44979352;
@@ -74,7 +68,7 @@
           }
         }
     </script>
-
+    <div clas="todoang">
     <section id="todoapp" ng-controller="MainCtrl">
       <ng-view></ng-view>
       <header id="header">
@@ -112,46 +106,47 @@
       </section>
   </div>
 </div>
+</div>
 
 <div class="rightpanel">
   <div id="firepad-container"></div>
 
-    <script>
-      function init() {
-        //// Initialize Firebase.
-        var firepadRef = getExampleRef();
-        // TODO: Replace above line with:
-        var ref = new Firebase('<https://brogramit.firebaseio.com/>');
+     // <script>
+    //   function init() {
+    //     //// Initialize Firebase.
+    //     var firepadRef = getExampleRef();
+    //     // TODO: Replace above line with:
+    //     var ref = new Firebase('<https://brogramit.firebaseio.com/>');
 
-        //// Create CodeMirror (with line numbers and the JavaScript mode).
-        var codeMirror = CodeMirror(document.getElementById('firepad-container'), {
-          lineNumbers: true,
-          mode: 'javascript'
-        });
+    //     //// Create CodeMirror (with line numbers and the JavaScript mode).
+    //     var codeMirror = CodeMirror(document.getElementById('firepad-container'), {
+    //       lineNumbers: true,
+    //       mode: 'javascript'
+    //     });
 
-        //// Create Firepad.
-        var firepad = Firepad.fromCodeMirror(firepadRef, codeMirror, {
-          defaultText: '// JavaScript Editing with Firepad!\nfunction go() {\n  var message = "Hello, world.";\n  console.log(message);\n}'
-        });
-      }
+    //     //// Create Firepad.
+    //     var firepad = Firepad.fromCodeMirror(firepadRef, codeMirror, {
+    //       defaultText: '// JavaScript Editing with Firepad!\nfunction go() {\n  var message = "Hello, world.";\n  console.log(message);\n}'
+    //     });
+    //   }
 
-      // Helper to get hash from end of URL or generate a random one.
-      function getExampleRef() {
-        var ref = new Firebase('https://firepad.firebaseio-demo.com');
-        var hash = window.location.hash.replace(/#/g, '');
-        if (hash) {
-          ref = ref.child(hash);
-        } else {
-          ref = ref.push(); // generate unique location.
-          window.location = window.location + '#' + ref.name(); // add it as a hash to the URL.
-        }
-        if (typeof console !== 'undefined')
-          console.log('Firebase data: ', ref.toString());
-        return ref;
-      }
+    //   // Helper to get hash from end of URL or generate a random one.
+    //   function getExampleRef() {
+    //     var ref = new Firebase('https://firepad.firebaseio-demo.com');
+    //     var hash = window.location.hash.replace(/#/g, '');
+    //     if (hash) {
+    //       ref = ref.child(hash);
+    //     } else {
+    //       ref = ref.push(); // generate unique location.
+    //       window.location = window.location + '#' + ref.name(); // add it as a hash to the URL.
+    //     }
+    //     if (typeof console !== 'undefined')
+    //       console.log('Firebase data: ', ref.toString());
+    //     return ref;
+    //   }
 
-      init();
-    </script>
+    //   init();
+    // </script>
   </div>
 </div>
 </body>

@@ -5,3 +5,10 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+
+User.create(:id => 1,
+                :provider => "github"
+                :uid => "5218681",
+                :name => "levani")
+
+

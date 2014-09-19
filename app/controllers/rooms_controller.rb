@@ -6,6 +6,10 @@ class RoomsController < ApplicationController
     @new_room = Room.new
   end
 
+  def update
+  end
+
+
 
   def index
     @rooms = Room.where(public: true).order("created_at DESC")
@@ -50,7 +54,7 @@ class RoomsController < ApplicationController
   end
 
   def room_params
-    params.require(:room).permit(:sessionId, :name, :public)
+    params.require(:room).permit(:sessionId, :name, :public, :subject, :created_by, :description)
   end
 
 
