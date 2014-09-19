@@ -1,46 +1,36 @@
-<head>
-  <script src="https://cdn.firebase.com/js/client/1.0.17/firebase.js"></script>
-
-  <!-- Firebase -->
-  <script src="https://cdn.firebase.com/js/client/1.0.17/firebase.js"></script>
-
-  <!-- CodeMirror and its JavaScript mode file -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/4.5.0/codemirror.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/4.5.0/mode/javascript/javascript.js"></script>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/4.5.0/codemirror.css" />
-
-  <!-- Firepad -->
-  <link rel="stylesheet" href="https://cdn.firebase.com/libs/firepad/1.0.0/firepad.css" />
-  <script src="https://cdn.firebase.com/libs/firepad/1.0.0/firepad.min.js"></script>
+  <head>
 
   <!-- OpenTok -->
   <script src="http://static.opentok.com/v0.91/js/TB.min.js" type="text/javascript"></script>
-</head>
 
-<body>
-<div id="invitation">Invite your friends! Share the url of this page http://localhost:3000/show/<%= @room.id %>
-</div>
+  <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/lodash.js/0.10.0/lodash.min.js"></script>
 
-  <div id="videobox">
-    <script type="text/javascript">
-    	var apiKey =  44979352;
-    	var sessionId = "<%= @room.sessionId %>";
-    	var token = "<%= @tok_token %>";
+  </head>
 
-    	var session;
-            
-    TB.setLogLevel(TB.DEBUG);
+  <body>
+    <div id="invitation">Invite your friends! Share the url of this page http://localhost:3000/show/<%= @room.id %>
+    </div>
+
+    <div id="videobox">
+      <script type="text/javascript">
+      var apiKey =  44979352;
+      var sessionId = "<%= @room.sessionId %>";
+      var token = "<%= @tok_token %>";
+
+      var session;
+
+      TB.setLogLevel(TB.DEBUG);
     //session.connect(apiKey, token);
-       var session = TB.initSession(sessionId);
-        session.addEventListener('sessionConnected', sessionConnectedHandler);
-        session.addEventListener('streamCreated', streamCreatedHandler);
-        session.connect(apiKey, token);
+    var session = TB.initSession(sessionId);
+    session.addEventListener('sessionConnected', sessionConnectedHandler);
+    session.addEventListener('streamCreated', streamCreatedHandler);
+    session.connect(apiKey, token);
 
 
-     var publisher;
-        function sessionConnectedHandler(event) {
-          publisher = TB.initPublisher(apiKey, 'videobox');
-          session.publish(publisher);
+    var publisher;
+    function sessionConnectedHandler(event) {
+      publisher = TB.initPublisher(apiKey, 'videobox');
+      session.publish(publisher);
 
           // Subscribe to streams that were in the session when we connected
           subscribeToStreams(event.streams);
@@ -67,88 +57,47 @@
             session.subscribe(streams[i], div.id);
           }
         }
-    </script>
-    <div clas="todoang">
-    <section id="todoapp" ng-controller="MainCtrl">
-      <ng-view></ng-view>
-      <header id="header">
-        <h1>todos</h1>
-        <form id="todo-form" ng-submit="save(activeTodo)">
+        </script>
+      </div>
+  <body>
+        <div class="todosection"
+      <section id="todoapp" ng-controller="MainCtrl">
+  <ng-view></ng-view>
+  <header id="header">
+    <h1>todos</h1>
+    <form id="todo-form" ng-submit="save(activeTodo)">
+      <input 
+      id="new-todo" 
+      placeholder="What needs to be done?" 
+      ng-model="activeTodo.title" 
+      autofocus>
+    </form>
+  </header>
+
+  <section id="main" ng-show="todos.length" ng-cloak>
+    <input 
+    id="toggle-all" 
+    type="checkbox" 
+    ng-model="checked"
+    ng-click="checkAll(checked)">
+    <label for="toggle-all">Mark all as complete</label>
+
+    <ul id="todo-list">
+      <li ng-repeat="todo in todos | filter:statusFilter track by $index" ng-class="{completed: todo.completed, editing: todo == editedTodo}">
+        <div class="view">
           <input 
-          id="new-todo" 
-          placeholder="What needs to be done?" 
-          ng-model="activeTodo.title" 
-          autofocus>
-        </form>
-      </header>
-
-      <section id="main" ng-show="todos.length" ng-cloak>
-        <input 
-        id="toggle-all" 
-        type="checkbox" 
-        ng-model="checked"
-        ng-click="checkAll(checked)">
-        <label for="toggle-all">Mark all as complete</label>
-
-        <ul id="todo-list">
-          <li ng-repeat="todo in todos | filter:statusFilter track by $index" ng-class="{completed: todo.completed, editing: todo == editedTodo}">
-            <div class="view">
-              <input 
-              class="toggle" 
-              type="checkbox" 
-              ng-model="todo.completed"
-              ng-click="checkAndSave(todo)">
-              <label ng-dblclick="edit(todo)">{{todo.title}}</label>
-              <button class="destroy" ng-click="remove(todo)"></button>
-            </div>
-          </li>
-        </ul>
-      </section>
-  </div>
-</div>
-</div>
-
-<div class="rightpanel">
-  <div id="firepad-container"></div>
-
-     // <script>
-    //   function init() {
-    //     //// Initialize Firebase.
-    //     var firepadRef = getExampleRef();
-    //     // TODO: Replace above line with:
-    //     var ref = new Firebase('<https://brogramit.firebaseio.com/>');
-
-    //     //// Create CodeMirror (with line numbers and the JavaScript mode).
-    //     var codeMirror = CodeMirror(document.getElementById('firepad-container'), {
-    //       lineNumbers: true,
-    //       mode: 'javascript'
-    //     });
-
-    //     //// Create Firepad.
-    //     var firepad = Firepad.fromCodeMirror(firepadRef, codeMirror, {
-    //       defaultText: '// JavaScript Editing with Firepad!\nfunction go() {\n  var message = "Hello, world.";\n  console.log(message);\n}'
-    //     });
-    //   }
-
-    //   // Helper to get hash from end of URL or generate a random one.
-    //   function getExampleRef() {
-    //     var ref = new Firebase('https://firepad.firebaseio-demo.com');
-    //     var hash = window.location.hash.replace(/#/g, '');
-    //     if (hash) {
-    //       ref = ref.child(hash);
-    //     } else {
-    //       ref = ref.push(); // generate unique location.
-    //       window.location = window.location + '#' + ref.name(); // add it as a hash to the URL.
-    //     }
-    //     if (typeof console !== 'undefined')
-    //       console.log('Firebase data: ', ref.toString());
-    //     return ref;
-    //   }
-
-    //   init();
-    // </script>
-  </div>
-</div>
+          class="toggle" 
+          type="checkbox" 
+          ng-model="todo.completed"
+          ng-click="checkAndSave(todo)">
+          <label ng-dblclick="edit(todo)">{{todo.title}}</label>
+          <button class="destroy" ng-click="remove(todo)"></button>
+        </div>
+      </li>
+    </ul>
+  </section>
+</section>
 </body>
 
+    </div>
 

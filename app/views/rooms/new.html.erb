@@ -13,7 +13,7 @@
 			</div>
 			<div class="form-inline lead-big">
 				<label for="freelancer"> I also 
-					<%= f.select :public, [['Want', true], ['Dont Want', false]] %> this room to be Public.
+					<%= f.select :public, [['want', true], ['dont Want', false]] %> this room to be Public.
 					<%= f.hidden_field :created_by, :value => @current_user.name %> <br><br>
 					<%= f.submit %>
 					<% end %>
