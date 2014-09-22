@@ -16,7 +16,7 @@
   <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/lodash.js/0.10.0/lodash.min.js"></script>
 
   <style>
-  html { height: 100%; }
+  html { height: 60%; }
   body { margin: 0; height: 80%; position: relative; }
     /* Height / width / positioning can be customized for your use case.
     For demo purposes, we make firepad fill the entire browser. */
@@ -25,54 +25,6 @@
   </head>
 
   <body>
-
-    <div id="firepad"></div>
-
-<script>
-  var firepadRef = new Firebase('https://brogram.firebaseio.com/');
-  var codeMirror = CodeMirror(document.getElementById('firepad'), { lineWrapping: true });
-  var firepad = Firepad.fromCodeMirror(firepadRef, codeMirror,
-      { richTextShortcuts: false, richTextToolbar: false});
-</script>
-
-<div id="firepad-container"></div>
-
-  <script>
-    function init() {
-      //// Initialize Firebase.
-       var firepadRef = getExampleRef();
-       // var ref = new Firebase('https://brogram.firebaseio.com/')
-
-      //// Create CodeMirror (with line numbers and the JavaScript mode).
-      var codeMirror = CodeMirror(document.getElementById('firepad-container'), {
-        lineNumbers: true,
-        mode: 'javascript'
-      });
-
-      //// Create Firepad.
-      var firepad = Firepad.fromCodeMirror(firepadRef, codeMirror, {
-        defaultText: '// lets start brogramming'
-      });
-    }
-
-    // Helper to get hash from end of URL or generate a random one.
-    function getExampleRef() {
-      var ref = new Firebase('https://firepad.firebaseio-demo.com');
-      var hash = window.location.hash.replace(/#/g, '');
-      if (hash) {
-        ref = ref.child(hash);
-      } else {
-        ref = ref.push(); // generate unique location.
-        window.location = window.location + '#' + ref.name(); // add it as a hash to the URL.
-      }
-      if (typeof console !== 'undefined')
-        console.log('Firebase data: ', ref.toString());
-      return ref;
-    }
-
-    init();
-  </script>
-
 
     <div id="videobox">
       <script type="text/javascript">
@@ -122,5 +74,91 @@
         }
         </script>
       </div>
+
+
+    <div id="firepad"></div>
+
+<script>
+  var firepadRef = new Firebase('https://brogram.firebaseio.com/');
+  var codeMirror = CodeMirror(document.getElementById('firepad'), { lineWrapping: true });
+  var firepad = Firepad.fromCodeMirror(firepadRef, codeMirror,
+      { richTextShortcuts: false, richTextToolbar: false});
+</script>
+
+<div id="firepad-container"></div>
+
+  <script>
+    function init() {
+      //// Initialize Firebase.
+       var firepadRef = getExampleRef();
+       // var ref = new Firebase('https://brogram.firebaseio.com/')
+
+      //// Create CodeMirror (with line numbers and the JavaScript mode).
+      var codeMirror = CodeMirror(document.getElementById('firepad-container'), {
+        lineNumbers: true,
+        mode: 'javascript'
+      });
+
+      //// Create Firepad.
+      var firepad = Firepad.fromCodeMirror(firepadRef, codeMirror, {
+        defaultText: '// lets start brogramming'
+      });
+    }
+
+    // Helper to get hash from end of URL or generate a random one.
+    function getExampleRef() {
+      var ref = new Firebase('https://firepad.firebaseio-demo.com');
+      var hash = window.location.hash.replace(/#/g, '');
+      if (hash) {
+        ref = ref.child(hash);
+      } else {
+        ref = ref.push(); // generate unique location.
+        window.location = window.location + '#' + ref.name(); // add it as a hash to the URL.
+      }
+      if (typeof console !== 'undefined')
+        console.log('Firebase data: ', ref.toString());
+      return ref;
+    }
+
+    init();
+  </script>
+
+  <section id="todoapp" ng-controller="MainCtrl">
+  <ng-view></ng-view>
+  <header id="header">
+    <h1>todos</h1>
+    <form id="todo-form" ng-submit="save(activeTodo)">
+      <input 
+      id="new-todo" 
+      placeholder="What needs to be done?" 
+      ng-model="activeTodo.title" 
+      autofocus>
+    </form>
+  </header>
+
+  <section id="main" ng-show="todos.length" ng-cloak>
+    <input 
+    id="toggle-all" 
+    type="checkbox" 
+    ng-model="checked"
+    ng-click="checkAll(checked)">
+    <label for="toggle-all">Mark all as complete</label>
+
+    <ul id="todo-list">
+      <li ng-repeat="todo in todos | filter:statusFilter track by $index" ng-class="{completed: todo.completed, editing: todo == editedTodo}">
+        <div class="view">
+          <input 
+          class="toggle" 
+          type="checkbox" 
+          ng-model="todo.completed"
+          ng-click="checkAndSave(todo)">
+          <label ng-dblclick="edit(todo)">{{todo.title}}</label>
+          <button class="destroy" ng-click="remove(todo)"></button>
+        </div>
+      </li>
+    </ul>
+  </section>
+</section>
+
     </body>
     </html>

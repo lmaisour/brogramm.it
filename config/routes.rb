@@ -25,6 +25,8 @@ Brogramming::Application.routes.draw do
   get '/auth/github/callback' => 'sessions#create'
   get '/logout' => 'sessions#destroy'
 
+  resources :comments, only: [:new, :create]
+
 
 
   # The priority is based upon order of creation: first created -> highest priority.

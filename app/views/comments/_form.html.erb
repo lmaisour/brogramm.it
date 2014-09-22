@@ -1,0 +1,11 @@
+<div class="jumbotron">
+  <%= form_for @comment do |f| %>
+    <div class="form-group">
+      <%= f.label :body, 'Enter your comment:' %>
+      <%= f.text_area :body, rows: 3, class: 'form-control', required: true, maxlength: 2000 %>
+
+    </div>
+ 
+    <%= f.submit 'Post', class: 'btn btn-primary btn-lg' %>
+  <% end %>
+</div>
