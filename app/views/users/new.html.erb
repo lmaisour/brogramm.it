@@ -1,24 +1,19 @@
 <!-- Warming Up -->
-<link href='http://fonts.googleapis.com/css?family=Lato:100' rel='stylesheet' type='text/css'>
+<link href='http://fonts.googleapis.com/css?family=Buenard:700' rel='stylesheet' type='text/css'>
 <script src="http://pupunzi.com/mb.components/mb.YTPlayer/demo/inc/jquery.mb.YTPlayer.js"></script>
 
 <!--Video Section-->
 <section class="content-section video-section">
+
   <div class="pattern-overlay">
-    <a id="bgndVideo" class="player" data-property="{videoURL:'https://www.youtube.com/watch?v=RfPubEYjqes&feature=youtu.be',containment:'.video-section', quality:'large', autoPlay:true, mute:true, opacity:1}"></a>
-    <div class="homecontainer">
-      <div class="row">
-        <div class="col-lg-12">
-        </div>
-      </div>
-
+  <a id="bgndVideo" class="player" data-property="{videoURL:'https://www.youtube.com/watch?v=RfPubEYjqes',containment:'.video-section', quality:'large', autoPlay:true, mute:true, opacity:1, loop:true, stopAt: 15, realfullscreen: true}"></a>
+  <div class="githublogin">
+     <%= link_to 'Log in with github'.upcase, login_path %>
     </div>
-
+    
   </div>
-</div>
 </section>
+<!--Video Section Ends Here-->
 
-<div class="githublogin">
-  <%= link_to 'Log in with github'.upcase, login_path %>
-  </div
+
 
