@@ -4,6 +4,9 @@ source 'https://rubygems.org'
 gem 'rails', '4.0.4'
 gem 'bower-rails'
 
+gem 'faye-rails', '~> 2.0'
+gem 'thin'
+gem 'jquery-turbolinks'
 # Use sqlite3 as the database for Active Record
 gem 'sqlite3'
 

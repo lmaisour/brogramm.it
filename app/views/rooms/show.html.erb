@@ -76,7 +76,7 @@
       </div>
 
 
-    <div id="firepad"></div>
+  <!--   <div id="firepad"></div>
 
 <script>
   var firepadRef = new Firebase('https://brogram.firebaseio.com/');
@@ -84,14 +84,14 @@
   var firepad = Firepad.fromCodeMirror(firepadRef, codeMirror,
       { richTextShortcuts: false, richTextToolbar: false});
 </script>
-
+ -->
 <div id="firepad-container"></div>
 
   <script>
     function init() {
       //// Initialize Firebase.
        var firepadRef = getExampleRef();
-       // var ref = new Firebase('https://brogram.firebaseio.com/')
+        // var ref = new Firebase('https://brogram.firebaseio.com/')
 
       //// Create CodeMirror (with line numbers and the JavaScript mode).
       var codeMirror = CodeMirror(document.getElementById('firepad-container'), {
@@ -115,6 +115,8 @@
         ref = ref.push(); // generate unique location.
         window.location = window.location + '#' + ref.name(); // add it as a hash to the URL.
       }
+
+      
       if (typeof console !== 'undefined')
         console.log('Firebase data: ', ref.toString());
       return ref;

@@ -219,5 +219,10 @@ margin: 0px auto 15px;
     width: 70%;
     height: 100%;
 }
+/*         COMMENTS        */
+#comments {
+  max-height: 500px;
+  overflow: auto;
+}
 
 

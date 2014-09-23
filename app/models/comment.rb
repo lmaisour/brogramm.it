@@ -1,4 +1,5 @@
 class Comment < ActiveRecord::Base
   belongs_to :user
-  validates :body, presence: true, length: {maximum: 2000}
+  belongs_to :room
+  # validates :body, presence: true, length: {maximum: 2000}
 end

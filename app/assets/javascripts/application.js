@@ -14,6 +14,10 @@
 //= require jquery
 //= require jquery_ujs
 //= require bootstrap
+//= require faye
+//= require comments
+//= require jquery.turbolinks
+//= require turbolinks
 //= require angular
 //= require angular-route
 //= require angular-resource
