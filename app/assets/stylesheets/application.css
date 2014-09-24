@@ -23,6 +23,14 @@ html {
     float:left;
     display: inline-block;
 }
+.angularapp {
+    width: 20.85%;
+    margin-left: 79%;
+    margin-top: -55%;
+    /*padding-top: -300px;*/
+    background-color: #f0f0f0;
+    height:100%;
+}
 #firepad {
     margin-top: -46%;
     margin-right: 16%;
@@ -31,8 +39,9 @@ html {
     width: 60%;
     height: 100%;
     float: right;
-    margin-top: -200%;
-    margin-right: -62%;
+    margin-top: -41%;
+    padding-right: 24%;
+    z-index: 100;
 }
 .videobox {
     float:right;

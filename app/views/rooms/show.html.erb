@@ -20,7 +20,7 @@
 </head>
 
 <body>
-  <div clas="leftside">
+
    <div id="videobox">
 
       <script type="text/javascript">
@@ -107,6 +107,7 @@
       var hash = window.location.hash.replace(/#/g, '');
       if (hash) {
         ref = ref.child(hash);
+        document.getElementById("whatever").innerHTML = hash;
       } else {
         ref = ref.push(); // generate unique location.
         window.location = window.location + '#' + ref.name(); // add it as a hash to the URL.
@@ -118,4 +119,38 @@
 
     init();
   </script>
+   <div class="angularapp">
+
+      <section id="todoapp" ng-controller="MainCtrl">
+        <ng-view></ng-view>
+        <header id="header">
+          <h1>Plan it out</h1>
+          <form id="todo-form" ng-submit="save(activeTodo)">
+            <input 
+            id="new-todo" 
+            placeholder="What needs to be done?" 
+            ng-model="activeTodo.title" 
+            autofocus>
+          </form>
+        </header>
+
+        <section id="main" ng-show="todos.length" ng-cloak>
+          
+          <ul id="todo-list">
+            <li ng-repeat="todo in todos | filter:statusFilter track by $index" ng-class="{completed: todo.completed, editing: todo == editedTodo}">
+              <div class="view">
+                <input 
+                class="toggle" 
+                type="checkbox" 
+                ng-model="todo.completed"
+                ng-click="checkAndSave(todo)">
+                <label ng-dblclick="edit(todo)">{{todo.title}}</label>
+                <button class="destroy" ng-click="remove(todo)"></button>
+              </div>
+            </li>
+          </ul>
+        </section>
+      </section>
+    </div>
+  </div>
 </body>
