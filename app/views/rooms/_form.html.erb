@@ -3,10 +3,7 @@
     <div class="form-group">
       <%= f.text_area :body, rows: 3, class: 'form-control', required: true, maxlength: 2000 %>
       <%= f.hidden_field :room_id, :value => @room.id %>
-	  <%= f.submit 'Post', class: 'btn btn-warning btn-md' %>
+	  <%= f.submit 'Post', class: 'btn btn-warning btn-group btn-block' %>
 	  <% end %>
     </div>
- 
-    
-  
 </div>

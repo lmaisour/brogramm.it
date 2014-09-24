@@ -24,17 +24,18 @@ html {
     display: inline-block;
 }
 .angularapp {
+    float: right;
     width: 20.85%;
-    margin-left: 79%;
-    margin-top: -55%;
-    /*padding-top: -300px;*/
     background-color: #f0f0f0;
-    height:100%;
+    height: 100%;
+    margin-right: -60%;
+    margin-top: -35%;
 }
 #firepad {
     margin-top: -46%;
     margin-right: 16%;
 }
+
 #firepad-container {
     width: 60%;
     height: 100%;
@@ -256,8 +257,7 @@ margin: 0px auto 15px;
 }
 .well1 {
     width: 20.85%;
-    height: 100%;
-    margin-top: -16px;
+    height: 60%;
 
 }
 .form-group {
@@ -269,21 +269,15 @@ margin: 0px auto 15px;
     height: 100px;
 }
 .jumbotron {
-    margin-bottom: 0px;
-    padding-left: 0px;
-    padding-right: 0px;
+    padding: 0px;
 }
 .btn {
     float:right;
 }
-.videobox {
-}
+
 #firepad-container {
     margin-top: -35%;
-    margin-right: 19%;
-
-}
-.firepad {
+    padding-right: 2%;
 
 }
 
