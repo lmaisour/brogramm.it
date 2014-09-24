@@ -16,22 +16,36 @@
   <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/lodash.js/0.10.0/lodash.min.js"></script>
 </head>
 
-  <body>
+<body>
 
-    <div class="row">
-  <div class="col-xs-6 col-md-4"><div class="well1">
-        <% if current_user %>
-          <%= render 'form' %>
-          <div class="panel panel-default" id="comments">
-            <div class="panel-body">
-              <ul class="media-list">
-                <%= render @room.comments %>
-                <% end %>
-              </ul>
-            </div>
-          </div>
+  <%= hidden_field_tag 'hash' %>
+
+  <div id="whatever"><p></p></div>
+
+  <%= form_for @room do |x| %>
+    <%= x.hidden_field :editor, :value => @room.id %>
+    <%= x.submit %>
+    <% end %>
+
+  
+
+  <div class="topbar">
+    <div class="well1">
+      <% if current_user %>
+      <%= render 'form' %>
+      <div class="panel panel-default" id="comments">
+        <div class="panel-body">
+          <ul class="media-list">
+            <%= render @room.comments %>
+            <% end %>
+          </ul>
         </div>
-  <div class="col-xs-6 col-md-4"><div class="angularapp">
+      </div>
+    </div>
+
+    
+    <div class="angularapp">
+
       <section id="todoapp" ng-controller="MainCtrl">
         <ng-view></ng-view>
         <header id="header">
@@ -70,15 +84,11 @@
       </section>
     </div>
   </div>
-</div>
-</div>
-    <div class="topbar">
-    
 
-    
-<div class="bottomhalf">
+  <div class="bottomhalf">
 
-    <!-- <div id="videobox">
+    <div id="videobox">
+
       <script type="text/javascript">
       var apiKey =  44979352;
       var sessionId = "<%= @room.sessionId %>";
@@ -125,7 +135,7 @@
           }
         }
         </script>
-      </div> -->
+      </div>
 
 
 <!--      <div id="firepad"></div>
@@ -136,11 +146,12 @@
   var firepad = Firepad.fromCodeMirror(firepadRef, codeMirror,
       { richTextShortcuts: false, richTextToolbar: false});
 </script>
- -->
+-->
 <div id="firepad-container">
 
-<script>
-function init() {
+  <script>
+
+  function init() {
       //// Initialize Firebase.
       var firepadRef = getExampleRef();
         // var ref = new Firebase('https://brogram.firebaseio.com/')
@@ -163,10 +174,14 @@ function init() {
       var hash = window.location.hash.replace(/#/g, '');
       if (hash) {
         ref = ref.child(hash);
+        document.getElementById("whatever").innerHTML = hash;
       } else {
         ref = ref.push(); // generate unique location.
-        window.location = window.location + '#' + ref.name(); // add it as a hash to the URL.
+        window.location = window.location + '#' + ref.name(); // add it as a hash to the 
+        console.log(ref.name)
+        console.log(window.location);
       }
+      
       if (typeof console !== 'undefined')
         console.log('Firebase data: ', ref.toString());
       return ref;
@@ -177,5 +192,4 @@ function init() {
     </script>
   </div>
 </div>
-
 </body>
