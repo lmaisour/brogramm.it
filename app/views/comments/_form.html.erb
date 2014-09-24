@@ -1,4 +1,4 @@
-<div class="jumbotron">
+
   <%= form_for @comment, url: room_comments_path(@room), remote: true do |f| %>
     <div class="form-group">
       <%= f.label :body, 'Enter your comment:' %>
@@ -6,6 +6,5 @@
 
     </div>
  	<%= f.hidden_field :room_id, :value => @room.id %>
-    <%= f.submit 'Post', class: 'btn btn-primary btn-lg' %>
+    <%= f.submit 'Post', class: 'btn btn-primary btn-md' %>
   <% end %>
-</div>

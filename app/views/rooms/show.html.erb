@@ -1,4 +1,6 @@
 <head>
+  <meta charset="utf-8" />
+  <!-- Firebase -->
   <script src="https://cdn.firebase.com/js/client/1.0.17/firebase.js"></script>
 
   <!-- CodeMirror and its JavaScript mode file -->
@@ -14,80 +16,12 @@
   <script src="http://static.opentok.com/v0.91/js/TB.min.js" type="text/javascript"></script>
 
   <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/lodash.js/0.10.0/lodash.min.js"></script>
+
 </head>
 
 <body>
-
-  <%= hidden_field_tag 'hash' %>
-
-  <div id="whatever"><p></p></div>
-
-  <%= form_for @room do |x| %>
-    <%= x.hidden_field :editor, :value => @room.id %>
-    <%= x.submit %>
-    <% end %>
-
-  
-
-  <div class="topbar">
-    <div class="well1">
-      <% if current_user %>
-      <%= render 'form' %>
-      <div class="panel panel-default" id="comments">
-        <div class="panel-body">
-          <ul class="media-list">
-            <%= render @room.comments %>
-            <% end %>
-          </ul>
-        </div>
-      </div>
-    </div>
-
-    
-    <div class="angularapp">
-
-      <section id="todoapp" ng-controller="MainCtrl">
-        <ng-view></ng-view>
-        <header id="header">
-          <h1>todos</h1>
-          <form id="todo-form" ng-submit="save(activeTodo)">
-            <input 
-            id="new-todo" 
-            placeholder="What needs to be done?" 
-            ng-model="activeTodo.title" 
-            autofocus>
-          </form>
-        </header>
-
-        <section id="main" ng-show="todos.length" ng-cloak>
-          <input 
-          id="toggle-all" 
-          type="checkbox" 
-          ng-model="checked"
-          ng-click="checkAll(checked)">
-          <label for="toggle-all">Mark all as complete</label>
-
-          <ul id="todo-list">
-            <li ng-repeat="todo in todos | filter:statusFilter track by $index" ng-class="{completed: todo.completed, editing: todo == editedTodo}">
-              <div class="view">
-                <input 
-                class="toggle" 
-                type="checkbox" 
-                ng-model="todo.completed"
-                ng-click="checkAndSave(todo)">
-                <label ng-dblclick="edit(todo)">{{todo.title}}</label>
-                <button class="destroy" ng-click="remove(todo)"></button>
-              </div>
-            </li>
-          </ul>
-        </section>
-      </section>
-    </div>
-  </div>
-
-  <div class="bottomhalf">
-
-    <div id="videobox">
+  <div clas="leftside">
+   <div id="videobox">
 
       <script type="text/javascript">
       var apiKey =  44979352;
@@ -136,25 +70,24 @@
         }
         </script>
       </div>
-
-
-<!--      <div id="firepad"></div>
-
-<script>
-  var firepadRef = new Firebase('https://brogram.firebaseio.com/');
-  var codeMirror = CodeMirror(document.getElementById('firepad'), { lineWrapping: true });
-  var firepad = Firepad.fromCodeMirror(firepadRef, codeMirror,
-      { richTextShortcuts: false, richTextToolbar: false});
-</script>
--->
-<div id="firepad-container">
-
+    <div class="well1">
+      <% if current_user %>
+      <%= render 'form' %>
+      <div class="panel panel-default" id="comments">
+        <div class="panel-body">
+          <ul class="media-list">
+            <%= render @room.comments %>
+            <% end %>
+          </ul>
+        </div>
+      </div>
+    </div>
+</div>
+  <div id="firepad-container"></div>
   <script>
-
-  function init() {
+    function init() {
       //// Initialize Firebase.
       var firepadRef = getExampleRef();
-        // var ref = new Firebase('https://brogram.firebaseio.com/')
 
       //// Create CodeMirror (with line numbers and the JavaScript mode).
       var codeMirror = CodeMirror(document.getElementById('firepad-container'), {
@@ -163,8 +96,8 @@
       });
 
       //// Create Firepad.
-      var firepad = Firepad.fromCodeMirror(firepadRef, codeMirror, {
-        defaultText: '// lets start brogramming'
+       var firepad = Firepad.fromCodeMirror(firepadRef, codeMirror, {
+        defaultText: '// Lets start brogramming!'
       });
     }
 
@@ -174,22 +107,15 @@
       var hash = window.location.hash.replace(/#/g, '');
       if (hash) {
         ref = ref.child(hash);
-        document.getElementById("whatever").innerHTML = hash;
       } else {
         ref = ref.push(); // generate unique location.
-        window.location = window.location + '#' + ref.name(); // add it as a hash to the 
-        console.log(ref.name)
-        console.log(window.location);
+        window.location = window.location + '#' + ref.name(); // add it as a hash to the URL.
       }
-      
       if (typeof console !== 'undefined')
         console.log('Firebase data: ', ref.toString());
       return ref;
     }
 
-
     init();
-    </script>
-  </div>
-</div>
+  </script>
 </body>

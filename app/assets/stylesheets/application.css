@@ -16,6 +16,27 @@
 
 @import url(http://fonts.googleapis.com/css?family=Montserrat:400,700);
 
+html { 
+    height: 100%; 
+}
+.leftside {
+    float:left;
+    display: inline-block;
+}
+#firepad {
+    margin-top: -46%;
+    margin-right: 16%;
+}
+#firepad-container {
+    width: 60%;
+    height: 100%;
+    float: right;
+    margin-top: -200%;
+    margin-right: -62%;
+}
+.videobox {
+    float:right;
+}
 body {
   	background-color: #f0f0f0;
   	font-family: 'Montserrat', sans-serif;
@@ -25,6 +46,9 @@ body {
 
     -webkit-font-smoothing: antialiased;
     -webkit-overflow-scrolling: touch;
+    margin: 0; 
+    height: 100%; 
+    position: relative; 
 }
 
 /* Titles */
@@ -215,34 +239,47 @@ margin: 0px auto 15px;
 #object {
     margin: 50%;
 }
-#firepad-container {
-    width: 70%;
-    height: 100%;
-}
+
 /*         COMMENTS        */
 #comments {
   max-height: 500px;
   overflow: auto;
 }
 .well1 {
-    width: 24%;
+    width: 20.85%;
     height: 100%;
+    margin-top: -16px;
+    text-align: 
+
+}
+.form-group {
+    height: 220px;
+    text-align: left
+
 }
 .panel-body {
     height: 100px;
 }
 .jumbotron {
     margin-bottom: 0px;
+    padding-left: 0px;
+    padding-right: 0px;
+}
+.btn {
+    float:right;
 }
 .videobox {
-    left: 50%;
 }
 #firepad-container {
-    left:50%;
+    margin-top: -35%;
+    margin-right: 19%;
+
 }
-.todoapp {
-    margin-left: 50%;
+.firepad {
+
 }
-.topbar {
-    display: -webkit-box;
+
+object {
+    float:left;
+    margin: 0 auto;
 }
