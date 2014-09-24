@@ -9,8 +9,6 @@ class RoomsController < ApplicationController
   def update
   end
 
-
-
   def index
     @rooms = Room.where(public: true).order("created_at DESC")
     @new_room = Room.new
@@ -25,7 +23,7 @@ class RoomsController < ApplicationController
     @new_room = Room.new(room_params)
 
     if @new_room.save
-        redirect_to("/show/"+@new_room.id.to_s) 
+        redirect_to("/rooms/"+@new_room.id.to_s) 
     else
         redirect_to root_path 
     end
@@ -35,6 +33,8 @@ class RoomsController < ApplicationController
   def show
         @room = Room.find(params[:id])
         @tok_token = @opentok.generate_token @room.sessionId
+        @comment = Comment.new
+        @comments = Comment.order('created_at DESC')
         # pass in @room.sessionId in as first argument instead of a hash
         # that contains it in a value
   end

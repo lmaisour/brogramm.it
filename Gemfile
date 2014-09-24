@@ -6,6 +6,7 @@ gem 'bower-rails'
 
 gem 'faye-rails', '~> 2.0'
 gem 'thin'
+# gem 'therubyracer'
 gem 'jquery-turbolinks'
 # Use sqlite3 as the database for Active Record
 gem 'sqlite3'
@@ -30,6 +31,9 @@ gem 'opentok'
 # Use for writing code online
 gem 'ace-rails-ap', '~> 2.0.1'
 
+group :development do
+  gem "better_errors"
+end
 
 # See https://github.com/sstephenson/execjs#readme for more supported runtimes
 # gem 'therubyracer', platforms: :ruby

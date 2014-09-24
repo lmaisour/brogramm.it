@@ -14,19 +14,71 @@
   <script src="http://static.opentok.com/v0.91/js/TB.min.js" type="text/javascript"></script>
 
   <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/lodash.js/0.10.0/lodash.min.js"></script>
-
-  <style>
-  html { height: 60%; }
-  body { margin: 0; height: 80%; position: relative; }
-    /* Height / width / positioning can be customized for your use case.
-    For demo purposes, we make firepad fill the entire browser. */
-
-    </style>
-  </head>
+</head>
 
   <body>
 
-    <div id="videobox">
+    <div class="row">
+  <div class="col-xs-6 col-md-4"><div class="well1">
+        <% if current_user %>
+          <%= render 'form' %>
+          <div class="panel panel-default" id="comments">
+            <div class="panel-body">
+              <ul class="media-list">
+                <%= render @room.comments %>
+                <% end %>
+              </ul>
+            </div>
+          </div>
+        </div>
+  <div class="col-xs-6 col-md-4"><div class="angularapp">
+      <section id="todoapp" ng-controller="MainCtrl">
+        <ng-view></ng-view>
+        <header id="header">
+          <h1>todos</h1>
+          <form id="todo-form" ng-submit="save(activeTodo)">
+            <input 
+            id="new-todo" 
+            placeholder="What needs to be done?" 
+            ng-model="activeTodo.title" 
+            autofocus>
+          </form>
+        </header>
+
+        <section id="main" ng-show="todos.length" ng-cloak>
+          <input 
+          id="toggle-all" 
+          type="checkbox" 
+          ng-model="checked"
+          ng-click="checkAll(checked)">
+          <label for="toggle-all">Mark all as complete</label>
+
+          <ul id="todo-list">
+            <li ng-repeat="todo in todos | filter:statusFilter track by $index" ng-class="{completed: todo.completed, editing: todo == editedTodo}">
+              <div class="view">
+                <input 
+                class="toggle" 
+                type="checkbox" 
+                ng-model="todo.completed"
+                ng-click="checkAndSave(todo)">
+                <label ng-dblclick="edit(todo)">{{todo.title}}</label>
+                <button class="destroy" ng-click="remove(todo)"></button>
+              </div>
+            </li>
+          </ul>
+        </section>
+      </section>
+    </div>
+  </div>
+</div>
+</div>
+    <div class="topbar">
+    
+
+    
+<div class="bottomhalf">
+
+    <!-- <div id="videobox">
       <script type="text/javascript">
       var apiKey =  44979352;
       var sessionId = "<%= @room.sessionId %>";
@@ -73,10 +125,10 @@
           }
         }
         </script>
-      </div>
+      </div> -->
 
 
-  <!--   <div id="firepad"></div>
+<!--      <div id="firepad"></div>
 
 <script>
   var firepadRef = new Firebase('https://brogram.firebaseio.com/');
@@ -85,12 +137,12 @@
       { richTextShortcuts: false, richTextToolbar: false});
 </script>
  -->
-<div id="firepad-container"></div>
+<div id="firepad-container">
 
-  <script>
-    function init() {
+<script>
+function init() {
       //// Initialize Firebase.
-       var firepadRef = getExampleRef();
+      var firepadRef = getExampleRef();
         // var ref = new Firebase('https://brogram.firebaseio.com/')
 
       //// Create CodeMirror (with line numbers and the JavaScript mode).
@@ -115,52 +167,15 @@
         ref = ref.push(); // generate unique location.
         window.location = window.location + '#' + ref.name(); // add it as a hash to the URL.
       }
-
-      
       if (typeof console !== 'undefined')
         console.log('Firebase data: ', ref.toString());
       return ref;
     }
 
+
     init();
-  </script>
+    </script>
+  </div>
+</div>
 
-  <section id="todoapp" ng-controller="MainCtrl">
-  <ng-view></ng-view>
-  <header id="header">
-    <h1>todos</h1>
-    <form id="todo-form" ng-submit="save(activeTodo)">
-      <input 
-      id="new-todo" 
-      placeholder="What needs to be done?" 
-      ng-model="activeTodo.title" 
-      autofocus>
-    </form>
-  </header>
-
-  <section id="main" ng-show="todos.length" ng-cloak>
-    <input 
-    id="toggle-all" 
-    type="checkbox" 
-    ng-model="checked"
-    ng-click="checkAll(checked)">
-    <label for="toggle-all">Mark all as complete</label>
-
-    <ul id="todo-list">
-      <li ng-repeat="todo in todos | filter:statusFilter track by $index" ng-class="{completed: todo.completed, editing: todo == editedTodo}">
-        <div class="view">
-          <input 
-          class="toggle" 
-          type="checkbox" 
-          ng-model="todo.completed"
-          ng-click="checkAndSave(todo)">
-          <label ng-dblclick="edit(todo)">{{todo.title}}</label>
-          <button class="destroy" ng-click="remove(todo)"></button>
-        </div>
-      </li>
-    </ul>
-  </section>
-</section>
-
-    </body>
-    </html>
+</body>

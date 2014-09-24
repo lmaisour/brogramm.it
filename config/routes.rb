@@ -8,11 +8,11 @@ Brogramming::Application.routes.draw do
     end
   end
 
-  get 'rooms/index'
-  get 'rooms/create'
-  get 'rooms/show'
+  # get 'rooms/index'
+  # get 'rooms/create'
+  # get 'rooms/show'
   get 'rooms/config_opentok'
-  match "/show/:id", to: "rooms#show", as: :show, via: [:get]
+  match "/show/:id", to: "rooms#show", as: :show, via: [:get, :post]
   
   resources :rooms do
     resources :users

@@ -1,35 +1,34 @@
 <div id=”newRoom”>
 
-<div class="container">
-<!-- 	<div class="jumbotron">
-		<h3>Let's Help a Brogrammer out</h3>
-	</div> -->
-    <div class="row">
-            <table class="table">
-            	        <thead>
-                    <tr class="filters">
-                        <th>Room Name</th>
-                        <th>Topic</th>
-                        <th>Description</th>
-                        <th>Created By</th>
-                        <th>Created At</th>
-                        
-                    </tr>
-                </thead>
-                    <tr> <% @rooms.each do |room| %></tr>
-                       <td> <%= link_to room.name.upcase, room %> </td>
-                       <td> <%= room.subject %> </td>
-                       <td> <%= room.description %> </td>
-                       <td> <%= room.created_by %> </td>  
-                       <td> <%= room.created_at %> </td>  
-                                     
-                       <% end %>   
-                       
+  <div class="container">
+   <div class="jumbotron">
+    <h3>Let's Help a Brogrammer out</h3>
+  </div>
+  <div class="row">
+    <table class="table">
+     <thead>
+      <tr class="filters">
+        <th>Room Name</th>
+        <th>Topic</th>
+        <th>Description</th>
+        <th>Created By</th>
+        <th>Created At</th>
 
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-    </div>
+      </tr>
+    </thead>
+    <tr> <% @rooms.each do |room| %></tr>
+    <td> <%= link_to room.name.upcase, room %> </td>
+    <td> <%= room.subject %> </td>
+    <td> <%= room.description %> </td>
+    <td> <%= room.created_by %> </td>  
+    <td> <%= room.created_at %> </td>  
+
+    <% end %>   
+
+
+  </tr>
+</tbody>
+</table>
 </div>
-	
+
+
