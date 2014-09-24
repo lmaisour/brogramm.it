@@ -31,6 +31,7 @@ class RoomsController < ApplicationController
   end
   
   def show
+        # change
         @room = Room.find(params[:id])
         @tok_token = @opentok.generate_token @room.sessionId
         @comment = Comment.new
