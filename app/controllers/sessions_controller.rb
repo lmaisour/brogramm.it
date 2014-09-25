@@ -1,7 +1,7 @@
 class SessionsController < ApplicationController
 
   def new
-    redirect_to '/auth/github/callback/'
+    redirect_to '/auth/github'
   end
 
   def create

@@ -26,6 +26,8 @@ Brogramming::Application.routes.draw do
   get '/login' => 'sessions#new'
   get '/auth/github/callback' => 'sessions#create'
   get '/logout' => 'sessions#destroy'
+  get '/auth/github' => 'sessions#create'
+
 
   #testing this for heroku
   # gave me undefined method for nil class error get '/auth/github' => 'sessions#create'
