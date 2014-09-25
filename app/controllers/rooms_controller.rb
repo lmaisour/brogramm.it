@@ -1,6 +1,6 @@
 class RoomsController < ApplicationController
   before_action :config_opentok, :except => [:index]
-  # before_action :require_login
+  before_action :require_login
 
   def new
     @new_room = Room.new
