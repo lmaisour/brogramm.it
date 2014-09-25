@@ -28,6 +28,10 @@ Brogramming::Application.routes.draw do
   get '/logout' => 'sessions#destroy'
 
 
+  #testing this for heroku
+  get '/auth/github' => 'sessions#create'
+
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
