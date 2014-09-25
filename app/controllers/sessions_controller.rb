@@ -1,7 +1,7 @@
 class SessionsController < ApplicationController
 
   def new
-    redirect_to 'http://brogramit.herokuapp.com/auth/github/callback/'
+    redirect_to '/auth/github/callback/'
   end
 
   def create
