@@ -11,7 +11,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140924015945) do
+ActiveRecord::Schema.define(version: 20140925035958) do
+
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
 
   create_table "comments", force: true do |t|
     t.text     "body"
@@ -21,8 +24,8 @@ ActiveRecord::Schema.define(version: 20140924015945) do
     t.integer  "room_id"
   end
 
-  add_index "comments", ["room_id"], name: "index_comments_on_room_id"
-  add_index "comments", ["user_id"], name: "index_comments_on_user_id"
+  add_index "comments", ["room_id"], name: "index_comments_on_room_id", using: :btree
+  add_index "comments", ["user_id"], name: "index_comments_on_user_id", using: :btree
 
   create_table "editors", force: true do |t|
     t.datetime "created_at"

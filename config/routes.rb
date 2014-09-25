@@ -13,6 +13,8 @@ Brogramming::Application.routes.draw do
   # get 'rooms/show'
   get 'rooms/config_opentok'
   match "/show/:id", to: "rooms#show", as: :show, via: [:get, :post]
+
+  
   
   resources :rooms do
     resources :users

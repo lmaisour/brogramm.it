@@ -19,34 +19,24 @@
 html { 
     height: 100%; 
 }
-.leftside {
-    float:left;
-    display: inline-block;
-}
 .angularapp {
     float: right;
     width: 20.85%;
     background-color: #f0f0f0;
     height: 100%;
-    margin-right: -60%;
-    margin-top: -35%;
-}
-#firepad {
-    margin-top: -46%;
-    margin-right: 16%;
+    margin-top: -34%;
+
 }
 
 #firepad-container {
-    width: 60%;
-    height: 100%;
-    float: right;
-    margin-top: -41%;
-    padding-right: 24%;
-    z-index: 100;
+    width: 53%;
+    height: 60%;
+    margin-left: 21%;
 }
-.videobox {
-    float:right;
+.leftside {
+    float:left;
 }
+
 body {
   	background-color: #f0f0f0;
   	font-family: 'Montserrat', sans-serif;
@@ -256,29 +246,18 @@ margin: 0px auto 15px;
   overflow: auto;
 }
 .well1 {
-    width: 20.85%;
-    height: 60%;
 
 }
 .form-group {
-    height: 220px;
-    text-align: left
 
 }
 .panel-body {
-    height: 100px;
+    height: 65px;
 }
 .jumbotron {
-    padding: 0px;
-}
-.btn {
-    float:right;
-}
-
-#firepad-container {
-    margin-top: -35%;
-    padding-right: 2%;
-
+    clear: both;
+    padding-top: 10px;
+    margin-bottom: -18%;
 }
 
 object {

@@ -20,107 +20,131 @@
 </head>
 
 <body>
-
- <div id="videobox">
-
-  <script type="text/javascript">
-  var apiKey =  44979352;
-  var sessionId = "<%= @room.sessionId %>";
-  var token = "<%= @tok_token %>";
-
-  var session;
-
-  TB.setLogLevel(TB.DEBUG);
-    //session.connect(apiKey, token);
-    var session = TB.initSession(sessionId);
-    session.addEventListener('sessionConnected', sessionConnectedHandler);
-    session.addEventListener('streamCreated', streamCreatedHandler);
-    session.connect(apiKey, token);
+  <div id="whatever"><p></p></div>
+   <%= form_for @room do |x| %>
+    <%= x.hidden_field :editor %>
+     <%= x.submit %>
+    <% end %>
+    <input id="uniqueId", type="text">
 
 
-    var publisher;
-    function sessionConnectedHandler(event) {
-      publisher = TB.initPublisher(apiKey, 'videobox');
-      session.publish(publisher);
+  <div class="leftside">
+   <div id="videobox">
+    <script type="text/javascript">
+    var apiKey =  44979352;
+    var sessionId = "<%= @room.sessionId %>";
+    var token = "<%= @tok_token %>";
 
-          // Subscribe to streams that were in the session when we connected
-          subscribeToStreams(event.streams);
-        }
+    var session;
 
-        function streamCreatedHandler(event) {
-          // Subscribe to any new streams that are created
-          subscribeToStreams(event.streams);
-        }
+    TB.setLogLevel(TB.DEBUG);
+      //session.connect(apiKey, token);
+      var session = TB.initSession(sessionId);
+      session.addEventListener('sessionConnected', sessionConnectedHandler);
+      session.addEventListener('streamCreated', streamCreatedHandler);
+      session.connect(apiKey, token);
 
-        function subscribeToStreams(streams) {
-          for (var i = 0; i < streams.length; i++) {
-            // Make sure we don't subscribe to ourself
-            if (streams[i].connection.connectionId == session.connection.connectionId) {
-              return;
-            }
 
-            // Create the div to put the subscriber element in to
-            var div = document.createElement('div');
-            div.setAttribute('id', 'stream' + streams[i].streamId);
-            document.body.appendChild(div);
+      var publisher;
+      function sessionConnectedHandler(event) {
+        publisher = TB.initPublisher(apiKey, 'videobox');
+        session.publish(publisher);
 
-            // Subscribe to the stream
-            session.subscribe(streams[i], div.id);
+            // Subscribe to streams that were in the session when we connected
+            subscribeToStreams(event.streams);
           }
-        }
-        </script>
-      </div>
-      <div class="well1">
-        <% if current_user %>
-        <%= render 'form' %>
-        <div class="panel panel-default" id="comments">
-          <div class="panel-body">
-            <ul class="media-list">
-              <%= render @room.comments %>
-              <% end %>
-            </ul>
+
+          function streamCreatedHandler(event) {
+            // Subscribe to any new streams that are created
+            subscribeToStreams(event.streams);
+          }
+
+          function subscribeToStreams(streams) {
+            for (var i = 0; i < streams.length; i++) {
+              // Make sure we don't subscribe to ourself
+              if (streams[i].connection.connectionId == session.connection.connectionId) {
+                return;
+              }
+
+              // Create the div to put the subscriber element in to
+              var div = document.createElement('div');
+              div.setAttribute('id', 'stream' + streams[i].streamId);
+              document.body.appendChild(div);
+
+              // Subscribe to the stream
+              session.subscribe(streams[i], div.id);
+            }
+          }
+          </script>
+        </div>
+
+        <div class="well1">
+          <% if current_user %>
+          <%= render 'form' %>
+          <div class="panel panel-default" id="comments">
+            <div class="panel-body">
+              <ul class="media-list">
+                <%= render @room.comments %>
+                <% end %>
+              </ul>
+            </div>
           </div>
         </div>
-      </div>
+    </div>
 
-    <div id="firepad-container">adsfadsf</div>
-      <script>
-      function init() {
+
+  <div id="firepad-container">
+
+    <script>
+    function init() {
+
+      // request = new XMLHttpRequest();
+      // request.open("PUT","/rooms/60",true);
+      // request.send("subject=test");
+
       //// Initialize Firebase.
       var firepadRef = getExampleRef();
+      // TODO: Replace above line with:
+      // var ref = new Firebase('<YOUR FIREBASE URL>');
 
       //// Create CodeMirror (with line numbers and the JavaScript mode).
       var codeMirror = CodeMirror(document.getElementById('firepad-container'), {
         lineNumbers: true,
         mode: 'javascript'
+      })
+
+      //// Create Firepad.
+
+
+
+      var firepad = Firepad.fromCodeMirror(firepadRef, codeMirror, {
+        defaultText: '// Lets start brogramming!'
       });
+    }
 
-        //// Create Firepad.
-        var firepad = Firepad.fromCodeMirror(firepadRef, codeMirror, {
-          defaultText: '// Lets start brogramming!'
-        });
+    // Helper to get hash from end of URL or generate a random one.
+    function getExampleRef() {
+      var ref = new Firebase('https://firepad.firebaseio-demo.com');
+      var hash = window.location.hash.replace(/#/g, '');
+      if (hash) {
+        ref = ref.child(hash);
+        document.getElementById("room_editor").value = hash;
+      } else {
+        console.log("meow 2");
+        console.log(window.location.href);
+        ref = ref.push(); // generate unique location.
+        window.location = window.location + '#' + ref.name(); // add it as a hash to the URL.
       }
+      if (typeof console !== 'undefined')
+        console.log('Firebase data: ', ref.toString());
+      return ref;
+    }
 
-      // Helper to get hash from end of URL or generate a random one.
-      function getExampleRef() {
-        var ref = new Firebase('https://firepad.firebaseio-demo.com');
-        var hash = window.location.hash.replace(/#/g, '');
-        if (hash) {
-          ref = ref.child(hash);
-          document.getElementById("whatever").innerHTML = hash;
-        } else {
-          ref = ref.push(); // generate unique location.
-          window.location = window.location + '#' + ref.name(); // add it as a hash to the URL.
-        }
-        if (typeof console !== 'undefined')
-          console.log('Firebase data: ', ref.toString());
-        return ref;
-      }
+    init();
+    </script>
+  </div>
 
-      init();
-      </script>
-    
-
+<div id="whatever"><p></p></div>
     <div class="angularapp">
 
       <section id="todoapp" ng-controller="MainCtrl">
@@ -156,4 +180,6 @@
         </section>
       </section>
     </div>
-</body>
+
+    
+  </body>
