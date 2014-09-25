@@ -35,6 +35,10 @@ group :development do
   gem "better_errors"
 end
 
+# group :production do
+# 	gem 'thin'
+# end
+
 # See https://github.com/sstephenson/execjs#readme for more supported runtimes
 # gem 'therubyracer', platforms: :ruby
 
