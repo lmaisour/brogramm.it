@@ -17,6 +17,10 @@ class UsersController < ApplicationController
       	uid: auth_hash[:uid],
         name: auth_hash[:info][:name])
 	end
+	
+	def create
+	end
+
 
 
 end
