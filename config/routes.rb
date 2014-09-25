@@ -29,7 +29,8 @@ Brogramming::Application.routes.draw do
 
 
   #testing this for heroku
-  get '/auth/github' => 'sessions#create'
+  # gave me undefined method for nil class error get '/auth/github' => 'sessions#create'
+  
 
 
   # The priority is based upon order of creation: first created -> highest priority.
