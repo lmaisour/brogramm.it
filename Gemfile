@@ -36,6 +36,15 @@ group :development do
   gem "better_errors"
 end
 
+group :development, :test do
+	gem 'rspec-rails', '~>3.0.0'
+end
+
+group :test do
+gem 'shoulda-matchers', require: false
+end
+
+
 # group :production do
 # 	gem 'thin'
 # end
