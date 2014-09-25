@@ -28,6 +28,7 @@
     <input id="uniqueId", type="text">
 
 
+
   <div class="leftside">
    <div id="videobox">
     <script type="text/javascript">
@@ -96,6 +97,7 @@
   <div id="firepad-container">
 
     <script>
+    console.log(uniqueId)
     function init() {
 
       // request = new XMLHttpRequest();
@@ -128,9 +130,9 @@
       var hash = window.location.hash.replace(/#/g, '');
       if (hash) {
         ref = ref.child(hash);
-        document.getElementById("room_editor").value = hash;
+        document.getElementById("uniqueId").value = hash;
+        console.log(uniqueId)
       } else {
-        console.log("meow 2");
         console.log(window.location.href);
         ref = ref.push(); // generate unique location.
         window.location = window.location + '#' + ref.name(); // add it as a hash to the URL.
