@@ -18,24 +18,7 @@
   <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/lodash.js/0.10.0/lodash.min.js"></script>
 
 </head>
-
 <body>
-  <div id="whatever"><p></p></div>
-   <%= form_for @room do |x| %>
-      <%= x.hidden_field :editor, :onchange => 'this.form.submit()' %>
-    
-     <%= x.submit %>
-     <input id="room_editor", type="text", value=''>
-     
-    <% end %>
-    
-    <script>
-      window.onload = function(){
-        document.room[editor].submit();
-      };
-    </script>
-
-
 
   <div class="leftside">
    <div id="videobox">
@@ -100,6 +83,21 @@
           </div>
         </div>
     </div>
+
+  <div id="whatever"><p></p></div>
+   <%= form_for @room do |x| %>
+      <%= x.hidden_field :editor, :onchange => 'this.form.submit()' %>
+    
+     <%= x.submit %>
+     <input id="room_editor", type="text", value=''>
+     
+    <% end %>
+    
+    <script>
+      window.onload = function(){
+        document.room[editor].submit();
+      };
+    </script>
 
 
   <div id="firepad-container">

@@ -24,7 +24,7 @@ html {
     width: 20.85%;
     background-color: #f0f0f0;
     height: 100%;
-    margin-top: -34%;
+    margin-top: -44%;
 
 }
 
@@ -237,7 +237,11 @@ margin: 0px auto 15px;
     margin: 50%;
 }
 #object {
-    margin: 50%;
+    float:left;
+    border: 2px solid red;
+}
+#subscriber {
+    border: 2px solid red;
 }
 
 /*         COMMENTS        */
