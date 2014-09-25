@@ -17,7 +17,7 @@
       </tr>
     </thead>
     <tr> <% @rooms.each do |room| %></tr>
-    <td> <%= link_to room.name.upcase, "rooms/"+room.id.to_s+"#"+room.editor.to_s %> </td>
+    <td> <%= link_to room.name.upcase, ("rooms/"+room.id.to_s+"#"+room.editor.to_s) %> </td>
     <td> <%= room.subject %> </td>
     <td> <%= room.description %> </td>
     <td> <%= room.created_by %> </td>  

@@ -22,10 +22,13 @@
 <body>
   <div id="whatever"><p></p></div>
    <%= form_for @room do |x| %>
-    <%= x.hidden_field :editor %>
+      <%= x.hidden_field :editor, :onchange => 'this.form.submit()' %>
+    
      <%= x.submit %>
+     <input id="room_editor", type="text", value=''>
+     
     <% end %>
-    <input id="uniqueId", type="text">
+    
 
 
 
@@ -97,7 +100,6 @@
   <div id="firepad-container">
 
     <script>
-    console.log(uniqueId)
     function init() {
 
       // request = new XMLHttpRequest();
@@ -130,10 +132,9 @@
       var hash = window.location.hash.replace(/#/g, '');
       if (hash) {
         ref = ref.child(hash);
-        document.getElementById("uniqueId").value = hash;
-        console.log(uniqueId)
+        document.getElementById("room_editor").value = hash;
+        console.log(window.location.hash);
       } else {
-        console.log(window.location.href);
         ref = ref.push(); // generate unique location.
         window.location = window.location + '#' + ref.name(); // add it as a hash to the URL.
       }

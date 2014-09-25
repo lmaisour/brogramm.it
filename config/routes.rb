@@ -12,9 +12,9 @@ Brogramming::Application.routes.draw do
   # get 'rooms/create'
   # get 'rooms/show'
   get 'rooms/config_opentok'
-  match "/show/:id", to: "rooms#show", as: :show, via: [:get, :post]
+  match "/room/:id", to: "rooms#show", as: :show, via: [:get, :post]
 
-  
+
   
   resources :rooms do
     resources :users
@@ -22,7 +22,6 @@ Brogramming::Application.routes.draw do
   end
 
   resources :users
-  resources :user_rooms
 
   get '/login' => 'sessions#new'
   get '/auth/github/callback' => 'sessions#create'

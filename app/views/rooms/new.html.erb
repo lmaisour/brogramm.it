@@ -4,16 +4,16 @@
 			<div class="form-group">
 				<%= form_for @new_room, :html => {:class => "form-inline lead-big"} do |f| %>
 				<label for="name"> I wanna create a room called <%= f.text_field :name %></label>
-				and
+				because
 			</div>
 			<div class="form-inline lead-big">
-				<label for="company"> I wish to <%= f.text_field :subject %></label>
+				<label for="name"> I wish to <%= f.text_field :subject %></label>
 				because <%= f.text_field :description %>
 				.
 			</div>
 			<div class="form-inline lead-big">
-				<label for="freelancer"> I also 
-					<%= f.select :public, [['want', true], ['dont Want', false]] %> this room to be Public.
+				<label for="name"> I also 
+					<%= f.select :public, [['want', true], ['dont want', false]] %> this room to be Public.
 					<%= f.hidden_field :created_by, :value => @current_user.name %> <br><br>
 					<%= f.submit %>
 					<% end %>
