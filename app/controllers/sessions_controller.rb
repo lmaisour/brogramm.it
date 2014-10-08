@@ -1,5 +1,4 @@
 class SessionsController < ApplicationController
-end
   def new
     redirect_to '/auth/github'
   end
