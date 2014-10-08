@@ -53,7 +53,7 @@ class RoomsController < ApplicationController
 
   def config_opentok
     if @opentok.nil?
-        @opentok = OpenTok::OpenTok.new "44979352", "c4b975eed97c2f85866bdc289904ddb84a842a56"
+        @opentok = OpenTok::OpenTok.new "45020052", "7fef46f167d1d7cdad73873d2e141943a8ac611d"
     end
   end
 
