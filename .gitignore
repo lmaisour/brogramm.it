@@ -15,8 +15,5 @@
 /log/*.log
 /tmp
 
-#ignore config file.
-/config/initializers/omniauth.rb
-
 # Ignore application configuration
 /config/application.yml
